@@ -2,6 +2,11 @@ body {
 	background-color: #E0FFFF
 }
 
+p {
+  color: #8DB6CD;
+  font-family: 'ProximaNova-SemiBold', 'HelveticaNeue-Medium', 'Helvetica Neue Medium', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
 .canvas {
   margin: 0 auto;
   display: block;
@@ -37,4 +42,35 @@ body {
   .canvas {
     display: none;
   }
+}
+
+.me {
+  z-index: 5;
+  margin-top: 45%;
+}
+
+.me .iam p {
+  font-size: 100px;
+}
+
+.me .intro p {
+  font-size: 30px;
+}
+
+
+@font-face {
+  font-family: 'ProximaNova-Semibold';
+  src: url('https://www.glowing.com/static/fonts/ProximaNova-Semibold.origin.eot') format('eot'), url('https://www.glowing.com/static/fonts/ProximaNova-Semibold.origin.otf') format('truetype');
+}
+@font-face {
+  font-family: 'ProximaNova-Light';
+  src: url('https://www.glowing.com/static/fonts/ProximaNova-Light.origin.eot') format('eot'), url('https://www.glowing.com/static/fonts/ProximaNova-Light.origin.otf') format('truetype');
+}
+@font-face {
+  font-family: 'ProximaNova-Semibold';
+  src: url('https://www.glowing.com/static/fonts/ProximaNova-Semibold.origin.eot') format('eot'), url('https://www.glowing.com/static/fonts/ProximaNova-Semibold.origin.otf') format('truetype');
+}
+@font-face {
+  font-family: 'ProximaNova-Light';
+  src: url('https://www.glowing.com/static/fonts/ProximaNova-Light.origin.eot') format('eot'), url('https://www.glowing.com/static/fonts/ProximaNova-Light.origin.otf') format('truetype');
 }
