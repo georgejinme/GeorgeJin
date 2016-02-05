@@ -1,5 +1,6 @@
 body {
-	background-color: #E0FFFF
+	background-color: #E0FFFF;
+  color: #8DB6CD;
 }
 
 p {
@@ -46,7 +47,7 @@ p {
 
 .me {
   z-index: 5;
-  margin-top: 45%;
+  margin-top: 40%;
 }
 
 .me .iam p {
@@ -56,6 +57,8 @@ p {
 .me .intro p {
   font-size: 30px;
 }
+
+
 
 
 @font-face {
