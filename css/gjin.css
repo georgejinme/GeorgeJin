@@ -1,3 +1,40 @@
 body {
 	background-color: #E0FFFF
 }
+
+.canvas {
+  margin: 0 auto;
+  display: block;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 50%;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  -webkit-transform: translate(-50%, 0) rotate(90deg);
+  -ms-transform: translate(-50%, 0) rotate(90deg);
+  transform: translate(-50%, 0) rotate(90deg);
+  -webkit-transition: all, 0.6s;
+  transition: all, 0.6s;
+  opacity: 0;
+}
+
+.canvas.active {
+  -webkit-transform: translate(-50%, 0) rotate(90deg);
+  -ms-transform: translate(-50%, 0) rotate(90deg);
+  transform: translate(-50%, 0) rotate(90deg);
+  opacity: 1;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .canvas {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .canvas {
+    display: none;
+  }
+}
