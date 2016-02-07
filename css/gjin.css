@@ -1,11 +1,22 @@
+*,
+*:after,
+*::before {
+  box-sizing: border-box;
+}
+
+
 body {
 	background-color: #E0FFFF;
   color: #8DB6CD;
 }
 
-p {
+p, button {
   color: #8DB6CD;
   font-family: 'ProximaNova-SemiBold', 'HelveticaNeue-Medium', 'Helvetica Neue Medium', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.container {
+  padding: 80px;
 }
 
 .canvas {
@@ -46,8 +57,10 @@ p {
 }
 
 .me {
+  text-align: center;
+  position: relative;
   z-index: 5;
-  margin-top: 40%;
+  margin-top: 10%
 }
 
 .me .iam p {
@@ -58,22 +71,200 @@ p {
   font-size: 30px;
 }
 
+.project {
+  position: relative;
+  width: 180px;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.myProjectBtn {
+  display: none;
+}
+
+/* The wrapper was defined with a fixed width and height
+   Note, that the pointer-events property is set to 'none'. 
+   We don't need any pointer events in the entire element. */
+.menu-icon-wrapper{
+    position: fixed;
+    right: 0;
+    bottom: 20px;
+    left: 0;
+    margin: auto;
+    width: 34px;
+    height: 34px;
+    display: inline-block;
+    pointer-events: none;
+    transition: 0.1s;
+    z-index: 1000;
+}
+
+/* To perform the scaled transform for the second demo */
+.menu-icon-wrapper.scaled{
+    transform: scale(0.5);
+}
+
+/* Adjusting the position of the SVG element */
+.menu-icon-wrapper svg{
+    position: absolute;
+    top: -33px;
+    left: -33px;
+}
+
+/* Defining the styles for the path elements */
+.menu-icon-wrapper svg path{
+    stroke: #8DB6CD;
+    stroke-width: 4px;
+    stroke-linecap: round;
+    fill: transparent;
+}
+
+/* Setting the pointer-events property to 'auto', 
+   and allowing only events for the trigger element */
+.menu-icon-wrapper .menu-icon-trigger{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    pointer-events: auto;
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.bt-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  border-width: 0px;
+  border-style: solid;
+  border-color: #333;
+  background-color: rgba(0,0,0,0);
+  transition: border-width 0.3s, background-color 0.3s, height 0s 0.3s;
+  z-index: 800
+}
+
+.bt-menu.bt-menu-open {
+  height: 100%;
+  border-width: 30px 30px 80px 30px;
+  background-color: rgba(141,182,205,0.3);
+  transition: border-width 0.3s, background-color 0.3s;
+  z-index: 800
+}
+
+.bt-overlay {
+  position: absolute;
+  width: 100%;
+}
+
+.bt-menu-open .bt-overlay {
+  height: 100%;
+}
+
+.bt-menu ul {
+  position: fixed;
+  bottom: 0px;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  list-style: none;
+  text-align: center;
+  white-space: nowrap;
+  height: 0;
+  -webkit-transition: height 0s 0.3s;
+  transition: height 0s 0.3s;
+}
+
+.bt-menu.bt-menu-open ul {
+  height: 80px;
+  -webkit-transition: none;
+  transition: none;
+}
+
+.bt-menu ul li,
+.bt-menu ul li a {
+  text-align: center;
+}
+
+.bt-menu ul li {
+  display: inline-block;
+  margin: 0 2%;
+  width: 5%;
+  height: 80px;
+  line-height: 80px;
+  opacity: 0;
+  -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+  transition: transform 0.3s, opacity 0.3s;
+  -webkit-transform: translate3d(0,100%,0);
+  transform: translate3d(0,100%,0);
+}
+
+.bt-menu ul li:nth-child(2) {
+  margin-right: 70px;
+}
+
+.bt-menu ul li:nth-child(3) {
+  margin-left: 70px;
+}
+
+.bt-menu.bt-menu-open ul li {
+  opacity: 1;
+  -webkit-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+}
+
+.bt-menu.bt-menu-open ul li:first-child,
+.bt-menu.bt-menu-open ul li:last-child {
+  -webkit-transition-delay: 0.15s;
+  transition-delay: 0.15s;
+}
+
+.bt-menu.bt-menu-open ul li:nth-child(2),
+.bt-menu.bt-menu-open ul li:nth-last-child(2) {
+  -webkit-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+}
+
+
+.bt-menu ul li a {
+  display: block;
+  outline: none;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 1.15em;
+  -webkit-transition: color 0.2s;
+  transition: color 0.2s;
+}
+
+.bt-menu ul li a:before {
+  display: none;
+  font-size: 32px;
+}
+
+.bt-menu ul li a:hover,
+.bt-menu ul li a:focus {
+  color: #8DB6CD;
+}
+
+@media screen and (max-height: 31.125em) {
+  .bt-menu ul li a:before {
+    font-size: 32px;
+  }
+}
 
 
 
 @font-face {
   font-family: 'ProximaNova-Semibold';
-  src: url('https://www.glowing.com/static/fonts/ProximaNova-Semibold.origin.eot') format('eot'), url('https://www.glowing.com/static/fonts/ProximaNova-Semibold.origin.otf') format('truetype');
+  src: url('../lib/bootstrap/fonts/ProximaNova-Semibold.origin.eot') format('eot'), url('../lib/bootstrap/fonts/ProximaNova-Semibold.origin.otf') format('truetype');
 }
 @font-face {
   font-family: 'ProximaNova-Light';
-  src: url('https://www.glowing.com/static/fonts/ProximaNova-Light.origin.eot') format('eot'), url('https://www.glowing.com/static/fonts/ProximaNova-Light.origin.otf') format('truetype');
-}
-@font-face {
-  font-family: 'ProximaNova-Semibold';
-  src: url('https://www.glowing.com/static/fonts/ProximaNova-Semibold.origin.eot') format('eot'), url('https://www.glowing.com/static/fonts/ProximaNova-Semibold.origin.otf') format('truetype');
-}
-@font-face {
-  font-family: 'ProximaNova-Light';
-  src: url('https://www.glowing.com/static/fonts/ProximaNova-Light.origin.eot') format('eot'), url('https://www.glowing.com/static/fonts/ProximaNova-Light.origin.otf') format('truetype');
+  src: url('../lib/bootstrap/fonts/ProximaNova-Light.origin.eot') format('eot'), url('../lib/bootstrap/fonts/ProximaNova-Light.origin.otf') format('truetype');
 }

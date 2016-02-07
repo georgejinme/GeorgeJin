@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
@@ -12,6 +11,8 @@
     <title>George Jin</title>
 
     <!-- Bootstrap core CSS -->
+    <link href="lib/textillate/animate.css" rel="stylesheet">
+    <link href="lib/textillate/style.css" rel="stylesheet">
     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/button.css" rel="stylesheet">
     <link href="css/gjin.css" rel="stylesheet">
@@ -28,26 +29,54 @@
     <canvas id="canvas" class="canvas active" width="1894" height="1025"></canvas>
 
     <div class="container">
-
         <div class = "me">
             <div class = "iam">
-                <p>George Jin</p>
+                <p class = "fadeInLeft">George Jin</p>
             </div>
             <div class = "intro">
-                <p>An iOS and web developer</p>
+                <p class = "fadeInLeft">An iOS and web developer</p>
             </div>
-            <button class="button button--ujarak button--border-medium button--round-s button--text-thick">My Project</button>
+            <div class = "project">
+                <button class="button button--ujarak button--border-medium button--round-s button--text-thick myProjectBtn">My Project</button>
+            </div>
         </div>
-
     </div><!-- /.container -->
+
+
+
+
+    <nav id="bt-menu" class="bt-menu">
+        <div id="menu-icon-wrapper" class="menu-icon-wrapper">
+            <!-- SVG element with paths -->
+            <svg width="100px" height="100px">
+                <path id="pathA" d="M 30 40 L 70 40 C 90 40 90 75 60 85 A 40 40 0 0 1 20 20 L 80 80"/>
+                <path id="pathB" d="M 30 50 L 70 50"/>
+                <path id="pathC" d="M 70 60 L 30 60 C 10 60 10 20 40 15 A 40 38 0 1 1 20 80 L 80 20"/>
+            </svg>
+            <!-- Trigger to perform the animations -->
+            <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
+        </div>
+        <ul>
+            <li><a href="#" class="bt-icon icon-zoom">Home</a></li>
+            <li><a href="#" class="bt-icon icon-refresh">Blogs</a></li>
+            <li><a href="#" class="bt-icon icon-lock">Projects</a></li>
+            <li><a href="#" class="bt-icon icon-speaker">Me</a></li>
+        </ul>
+    </nav>
+
 
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="lib/jquery.js"></script>
-    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="lib/textillate/jquery.fittext.js"></script>
+    <script src="lib/textillate/jquery.lettering.js"></script>
+    <script src="lib/textillate/jquery.textillate.js"></script>
     <script src="lib/svg.js"></script>
+    <script src="lib/dist/ease.min.js"></script>
+    <script src="lib/dist/segment.js"></script>
+    <script src="lib/dist/classie.js"></script>
     <script src="js/gjin.js"></script>
   </body>
 </html>
