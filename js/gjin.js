@@ -1,3 +1,12 @@
+var currentPageInProgect = 0 // the current page of project
+var animEndEventNames = {
+            'WebkitAnimation' : 'webkitAnimationEnd',
+            'OAnimation' : 'oAnimationEnd',
+            'msAnimation' : 'MSAnimationEnd',
+            'animation' : 'animationend'
+        }
+var animEndEventName = animEndEventNames[ Modernizr.prefixed( 'animation' ) ]
+
 $(document).ready(function(){
     NProgress.start()
     initProgress()
@@ -5,6 +14,7 @@ $(document).ready(function(){
     initTitle()
     initNav()
     initNavItems()
+    initProjects()
 })
 
 window.onload = function(){ 
@@ -235,12 +245,31 @@ var initNav = function() {
 }
 
 var initNavItems = function(){
-    $("#homeNav, #meNav").click(function(){
+    $("#homeNav, #meNav, #projectsNav").click(function(){
         $(document).pjax("a", ".container", {fragment: ".container"})
         $('#menu-icon-trigger').trigger("click")
     })
 }
 
 
+var initProjects = function(){
+    $(".next").click(function(){
+        var pages = $(".pt-page")
+        if (currentPageInProgect < pages.length - 1) {
+            pages.eq(currentPageInProgect).addClass("pt-page-moveToLeft").on(animEndEventName, function(){
+                console.log(animEndEventName)
+                $(this).off(animEndEventName)
+                $(this).removeClass("pt-page-moveToLeft pt-page-current")
+            })
+            ++currentPageInProgect
+            pages.eq(currentPageInProgect).addClass("pt-page-scaleUp pt-page-current").on(animEndEventName, function(){
+                $(this).off(animEndEventName)
+                $(this).removeClass("pt-page-scaleUp")
+                $(this).addClass("pt-page-current")
+            })
+        }
+
+    })
+}
 
 

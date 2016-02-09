@@ -296,3 +296,71 @@ p,h1,a, button {
 
 
 
+/* special for project.html */
+.pt-perspective {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  -webkit-perspective: 1200px;
+  -moz-perspective: 1200px;
+  perspective: 1200px;
+}
+
+.pt-page {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+.pt-page-current,
+.no-js .pt-page {
+  visibility: visible;
+}
+
+.no-js body {
+  overflow: auto;
+}
+
+.pt-page-ontop {
+  z-index: 999;
+}
+
+.next {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 2000;
+}
+
+.previous {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+}
+
+.myProject {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%
+}
+
+
+
+
+
+
+
