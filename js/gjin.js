@@ -253,11 +253,11 @@ var initNavItems = function(){
 
 
 var initProjects = function(){
+    var pages = $(".pt-page")
+    $(".progress-bar").css("width", ((currentPageInProgect + 1) / pages.length * 100).toString() + "%")
     $(".next").click(function(){
-        var pages = $(".pt-page")
         if (currentPageInProgect < pages.length - 1) {
             pages.eq(currentPageInProgect).addClass("pt-page-moveToLeft").on(animEndEventName, function(){
-                console.log(animEndEventName)
                 $(this).off(animEndEventName)
                 $(this).removeClass("pt-page-moveToLeft pt-page-current")
             })
@@ -267,8 +267,25 @@ var initProjects = function(){
                 $(this).removeClass("pt-page-scaleUp")
                 $(this).addClass("pt-page-current")
             })
+            $(".progress-bar").css("width", ((currentPageInProgect + 1) / pages.length * 100).toString() + "%")
         }
 
+    })
+    $(".previous").click(function(){
+        var pages = $(".pt-page")
+        if (currentPageInProgect > 0) {
+            pages.eq(currentPageInProgect).addClass("pt-page-moveToRight").on(animEndEventName, function(){
+                $(this).off(animEndEventName)
+                $(this).removeClass("pt-page-moveToRight pt-page-current")
+            })
+            --currentPageInProgect
+            pages.eq(currentPageInProgect).addClass("pt-page-scaleUp pt-page-current").on(animEndEventName, function(){
+                $(this).off(animEndEventName)
+                $(this).removeClass("pt-page-scaleUp")
+                $(this).addClass("pt-page-current")
+            })
+            $(".progress-bar").css("width", ((currentPageInProgect + 1) / pages.length * 100).toString() + "%")
+        }
     })
 }
 
