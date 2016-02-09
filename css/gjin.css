@@ -78,9 +78,6 @@ p, button {
   margin-top: 30px;
 }
 
-.myProjectBtn {
-  display: none;
-}
 
 /* The wrapper was defined with a fixed width and height
    Note, that the pointer-events property is set to 'none'. 
@@ -268,3 +265,15 @@ p, button {
   font-family: 'ProximaNova-Light';
   src: url('../lib/bootstrap/fonts/ProximaNova-Light.origin.eot') format('eot'), url('../lib/bootstrap/fonts/ProximaNova-Light.origin.otf') format('truetype');
 }
+
+
+
+
+
+
+/* special for me.html */
+
+
+
+
+
