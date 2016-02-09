@@ -4,13 +4,16 @@
   box-sizing: border-box;
 }
 
+iframe {
+  border: 0px
+}
 
 body {
 	background-color: #E0FFFF;
   color: #8DB6CD;
 }
 
-p, button {
+p,h1,a, button {
   color: #8DB6CD;
   font-family: 'ProximaNova-SemiBold', 'HelveticaNeue-Medium', 'Helvetica Neue Medium', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -23,7 +26,7 @@ p, button {
   margin: 0 auto;
   display: block;
   position: fixed;
-  z-index: 1;
+  z-index: -1;
   top: 0;
   left: 50%;
   bottom: 0;
@@ -273,7 +276,23 @@ p, button {
 
 /* special for me.html */
 
+.mePhoto {
+  background-image: url("../img/photo.jpg");
+  background-repeat: no-repeat; 
+  background-attachment:fixed; 
+  background-size: 100%, 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 400px;
+  z-index: 500;
+}
 
+.meIntro {
+  margin-top: 400px;
+  margin-left: 100px;
+}
 
 
 
