@@ -13,7 +13,7 @@ $(document).ready(function(){
 	initPath()
     initTitle()
     initNav()
-    initNavItems()
+    initNavItemsEvent()
     initProjects()
 })
 
@@ -244,8 +244,15 @@ var initNav = function() {
     init();
 }
 
-var initNavItems = function(){
+var initNavItemsEvent = function(){
+    $(document).on("pjax:end", function(event){
+        if ($(event.relatedTarget).attr("id")){
+            initProjects()
+        }
+    })
+
     $("#homeNav, #meNav, #projectsNav").click(function(){
+        var type = $(this)
         $(document).pjax("a", ".container", {fragment: ".container"})
         $('#menu-icon-trigger').trigger("click")
     })
@@ -253,9 +260,14 @@ var initNavItems = function(){
 
 
 var initProjects = function(){
-    var pages = $(".pt-page")
-    $(".progress-bar").css("width", ((currentPageInProgect + 1) / pages.length * 100).toString() + "%")
+    $.get("php/project.php", function(data){
+        $("#pt-main").append(data)
+        $(".pt-page").eq(0).addClass("pt-page-current")
+        $(".progress-bar").css("width", ((currentPageInProgect + 1) / $(".pt-page").length * 100).toString() + "%")
+    })
+
     $(".next").click(function(){
+        var pages = $(".pt-page")
         if (currentPageInProgect < pages.length - 1) {
             pages.eq(currentPageInProgect).addClass("pt-page-moveToLeft").on(animEndEventName, function(){
                 $(this).off(animEndEventName)

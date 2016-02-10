@@ -2,18 +2,18 @@
 	"projects":[
 		{
 			"imageurl": "img/photo.jpg",
-			"title": "是男人就坚持20秒",
-			"Type": "Game",
+			"title": "20 Seconds",
+			"type": "Game",
 			"language": "Python",
 			"platform": "Windows",
 			"date": "2014.02",
 			"role": "Independent Development",
-			"description": "In this game, the bullets will come from different positions of window's edges. You control a plane and should try to avoid being hit by bullets.",
+			"description": "In this game, the bullets will come from different positions of window's edges. You control a plane and should try to avoid being hit by bullets."
 		},
 
 		{
 			"imageurl": "img/photo.jpg",
-			"title": "同去",
+			"title": "TongQu",
 			"type": "Tools",
 			"language": "Swift",
 			"platform": "iOS",
@@ -22,6 +22,7 @@
 			"description": "This application helps students in my university to take part in activities and manage his activity group.",
 			"other": [
 				{
+					"info": "App Store",
 					"img": "img/appleinc.svg",
 					"url": "https://itunes.apple.com/cn/app/tong-qu-wang/id933524040?mt=8"
 				}
@@ -30,7 +31,7 @@
 
 		{
 			"imageurl": "img/photo.jpg",
-			"title": "交汇Crossy",
+			"title": "Crossy",
 			"type": "Tools",
 			"language": "Swift",
 			"platform": "iOS, WatchOS 1",

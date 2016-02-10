@@ -13,7 +13,7 @@ body {
   color: #8DB6CD;
 }
 
-p,h1,a, button {
+p,h1,a,li,strong, button {
   color: #8DB6CD;
   font-family: 'ProximaNova-SemiBold', 'HelveticaNeue-Medium', 'Helvetica Neue Medium', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -355,7 +355,7 @@ p,h1,a, button {
   position: absolute;
   left: 0;
   top: 0;
-  width: 100%
+  width: 100%;
 }
 
 .progress {
@@ -375,7 +375,6 @@ p,h1,a, button {
 }
 
 .projectPhoto {
-  background-image: url("../img/photo.jpg");
   background-repeat: no-repeat; 
   background-attachment:fixed; 
   background-size: 100%, 100%;
@@ -390,6 +389,7 @@ p,h1,a, button {
 .projectIntro {
   position: relative;
   width: 500px;
+  height: 500px;
   margin: auto;
   margin-top: 430px;
 }
