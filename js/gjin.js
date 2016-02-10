@@ -246,7 +246,7 @@ var initNav = function() {
 
 var initNavItemsEvent = function(){
     $(document).on("pjax:end", function(event){
-        if ($(event.relatedTarget).attr("id")){
+        if ($(event.relatedTarget).attr("id") == "projectsNav"){
             initProjects()
         }
     })
