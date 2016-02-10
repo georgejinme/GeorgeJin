@@ -1,0 +1,154 @@
+{
+	"projects":[
+		{
+			"imageurl": "img/photo.jpg",
+			"title": "是男人就坚持20秒",
+			"Type": "Game",
+			"language": "Python",
+			"platform": "Windows",
+			"date": "2014.02",
+			"role": "Independent Development",
+			"description": "In this game, the bullets will come from different positions of window's edges. You control a plane and should try to avoid being hit by bullets.",
+		},
+
+		{
+			"imageurl": "img/photo.jpg",
+			"title": "同去",
+			"type": "Tools",
+			"language": "Swift",
+			"platform": "iOS",
+			"date": "2014.07",
+			"role": "Team Member",
+			"description": "This application helps students in my university to take part in activities and manage his activity group.",
+			"other": [
+				{
+					"img": "img/appleinc.svg",
+					"url": "https://itunes.apple.com/cn/app/tong-qu-wang/id933524040?mt=8"
+				}
+			]
+		},
+
+		{
+			"imageurl": "img/photo.jpg",
+			"title": "交汇Crossy",
+			"type": "Tools",
+			"language": "Swift",
+			"platform": "iOS, WatchOS 1",
+			"date": "2015.02",
+			"role": "Independent Development",
+			"description": "Students can use Crossy to find school buses, library books, ecard information and course scores.",
+			"other": [
+				{
+					"img": "img/appleinc.svg",
+					"url": "https://itunes.apple.com/cn/app/jiao-huicrossy-jiao-da-sheng/id1019173353?mt=8"
+				}
+			]
+		},
+
+		{
+			"imageurl": "img/photo.jpg",
+			"title": "Crossy - Cortex-M3",
+			"type": "Tools",
+			"language": "Python, C",
+			"platform": "Embbed System",
+			"date": "2015.05",
+			"role": "Independent Development",
+			"description": "Now Crossy can be used on Cortex-M3 board. The functions are the same as that on iOS.",
+			"other": [
+				{
+					"img": "img/github.svg",
+					"url": "https://github.com/gougoumemeda/Crossy_Cortex-M3"
+				}
+			]
+		},
+
+		{	
+			"imageurl": "img/photo.jpg",
+			"title": "2015 iGEM - BASE",
+			"type": "Tools",
+			"language": "Javascript, php",
+			"platform": "Website",
+			"date": "2015.09",
+			"role": "Team Member",
+			"description": "This website helps biology students and professors to make their own biobricks.",
+			"other":[
+				{
+					"img": "",
+					"url": "https://www.igembase.com"
+				},
+				{
+					"img": "img/github.svg",
+					"url": "https://github.com/igemsoftware/SJTU-Software2015"
+				}
+			]
+		},
+
+		{
+			"imageurl": "img/photo.jpg",
+			"title": "2015 Penta-Hackathon - Music player based on face expression",
+			"type": "Entertainment",
+			"language": "Javascript, Python",
+			"platform": "Website",
+			"date": "2015.11",
+			"role": "Team Member",
+			"description": "This website can play music based on your face expression.",
+			"other":[
+				{
+					"img": "",
+					"url": "https://coding.net/u/mrmiywj/p/emotion-music/git"
+				}
+			]
+		},
+
+		{
+			"imageurl": "img/photo.jpg",
+			"title": "Zhihu Picture",
+			"type": "Tools",
+			"language": "Javascript",
+			"platform": "Chrome Plugin",
+			"date": "2015.11",
+			"role": "Independent Development",
+			"description": "This plugin can remove all the text information of an answer on Zhihu",
+			"other": [
+				{
+					"img": "img/github.svg",
+					"url": "https://github.com/gougoumemeda/ZhihuPictureRelease"
+				}
+			]
+		},
+
+		{
+			"imageurl": "img/photo.jpg",
+			"title": "MultiSense Hotel System",
+			"type": "Tools",
+			"language": "Javascript, Python",
+			"platform": "Website",
+			"date": "2015.12",
+			"role": "Independent Development",
+			"description": "This website is made for customers, receptionists and managers. They can book rooms, check-in and check-out, human resource management and benefit analysis.",
+			"other": [
+				{
+					"img": "img/github.svg",
+					"url": "https://github.com/gougoumemeda/MultisenseHotelSystem"
+				}
+			]
+		},
+
+		{
+			"imageurl": "img/photo.jpg",
+			"title": "Smart Car Control System",
+			"type": "System",
+			"language": "Swift, C",
+			"platform": "iOS",
+			"date": "2015.12",
+			"role": "Team Member",
+			"description": "The phone with this system can control the smart car by buttons, sounds, gestures and gravity sensor. The smart car will send the image of what it saw to the control phone.",
+			"other": [
+				{
+					"img": "img/github.svg",
+					"url": "https://github.com/gougoumemeda/SJTU_3C_IOS"
+				}
+			]
+		}
+	]
+}

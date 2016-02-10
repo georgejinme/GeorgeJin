@@ -359,7 +359,7 @@ p,h1,a, button {
 }
 
 .progress {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   left: 0;  
@@ -374,6 +374,33 @@ p,h1,a, button {
   background-color: #8DB6CD
 }
 
+.projectPhoto {
+  background-image: url("../img/photo.jpg");
+  background-repeat: no-repeat; 
+  background-attachment:fixed; 
+  background-size: 100%, 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 400px;
+  z-index: 500;
+}
+
+.projectIntro {
+  position: relative;
+  width: 500px;
+  margin: auto;
+  margin-top: 430px;
+}
+
+.projectIntro {
+  text-align: center;
+}
+
+.projectDetail {
+  text-align: left;
+}
 
 
 
