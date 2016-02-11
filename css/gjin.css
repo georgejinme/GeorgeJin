@@ -15,7 +15,7 @@ body {
 
 p,h1,a,li,strong, button {
   color: #8DB6CD;
-  font-family: 'ProximaNova-SemiBold', 'HelveticaNeue-Medium', 'Helvetica Neue Medium', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'ProximaNova-Light', 'HelveticaNeue-Medium', 'Helvetica Neue Medium', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .container {
@@ -114,7 +114,7 @@ p,h1,a,li,strong, button {
 /* Defining the styles for the path elements */
 .menu-icon-wrapper svg path{
     stroke: #8DB6CD;
-    stroke-width: 4px;
+    stroke-width: 2px;
     stroke-linecap: round;
     fill: transparent;
 }
@@ -364,7 +364,7 @@ p,h1,a,li,strong, button {
   width: 100%;
   left: 0;  
   margin: 0;
-  height: 5px;
+  height: 2px;
   border: none;
   box-shadow: none;
   background-color: rgba(0,0,0,0);

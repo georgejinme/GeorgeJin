@@ -39,7 +39,7 @@ var initPath = function(){
                 window.setTimeout(callback, 1000 / 60);
             };
     })();
-    var number_of_curves=32;
+    var number_of_curves=5;
     var C = [];
     var curve = function(cp1x, cp1y, cp2x, cp2y, x, y, cp1xvx,cp1xvy,cp1yvx,cp1yvy,cp2xvx,cp2xvy,cp2yvx,cp2yvy) {
         this.cp1x = cp1x;
@@ -247,15 +247,15 @@ var initNav = function() {
 var initNavItemsEvent = function(){
     $(document).pjax("a", ".container", {fragment: ".container"})
     $(document).on("pjax:end", function(event){
+        console.log("pjax")
         if ($(event.relatedTarget).attr("id") == "projectsNav" || $(event.relatedTarget).attr("id") == "projectsNavBtn"){
             initProjects()
         } else if ($(event.relatedTarget).attr("id") == "homeNav") {
-            console.log(123)
             $(document).pjax("a", ".container", {fragment: ".container"})
         }
     })
 
-    $("#homeNav, #meNav, #projectsNav").click(function(){
+    $("#homeNav, #meNav, #projectsNav, #blogNav").click(function(){
         $('#menu-icon-trigger').trigger("click")
     })
 }
