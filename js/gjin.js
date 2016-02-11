@@ -10,7 +10,7 @@ var animEndEventName = animEndEventNames[ Modernizr.prefixed( 'animation' ) ]
 $(document).ready(function(){
     NProgress.start()
     initProgress()
-	initPath()
+	//initPath()
     initTitle()
     initNav()
     initNavItemsEvent()
@@ -245,15 +245,17 @@ var initNav = function() {
 }
 
 var initNavItemsEvent = function(){
+    $(document).pjax("a", ".container", {fragment: ".container"})
     $(document).on("pjax:end", function(event){
-        if ($(event.relatedTarget).attr("id") == "projectsNav"){
+        if ($(event.relatedTarget).attr("id") == "projectsNav" || $(event.relatedTarget).attr("id") == "projectsNavBtn"){
             initProjects()
+        } else if ($(event.relatedTarget).attr("id") == "homeNav") {
+            console.log(123)
+            $(document).pjax("a", ".container", {fragment: ".container"})
         }
     })
 
     $("#homeNav, #meNav, #projectsNav").click(function(){
-        var type = $(this)
-        $(document).pjax("a", ".container", {fragment: ".container"})
         $('#menu-icon-trigger').trigger("click")
     })
 }
@@ -263,6 +265,7 @@ var initProjects = function(){
     $.get("php/project.php", function(data){
         $("#pt-main").append(data)
         $(".pt-page").eq(0).addClass("pt-page-current")
+        currentPageInProgect = 0
         $(".progress-bar").css("width", ((currentPageInProgect + 1) / $(".pt-page").length * 100).toString() + "%")
     })
 
