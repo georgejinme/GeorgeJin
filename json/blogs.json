@@ -1,0 +1,14 @@
+{
+	"BLOGS":[
+		{
+			"title": "test1",
+			"date": "2016.01.09",
+			"content": "#####Customers\n- Booking and Purchasing\n- Searching the Nearest Hotel\n- Ordering Meals\n- Recommendation with Tourist Attrations"
+		},
+		{
+			"title": "test2",
+			"date": "2016.01.05",
+			"content": "![img](https://github.com/gougoumemeda/MultisenseHotelSystem/blob/master/MultisenseHotelSystem/static/img/2.jpg)"
+		}
+	]
+}

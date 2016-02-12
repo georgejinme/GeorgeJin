@@ -18,6 +18,10 @@ p,h1,a,li,strong, button {
   font-family: 'ProximaNova-Light', 'HelveticaNeue-Medium', 'Helvetica Neue Medium', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+button{
+  border: 1px solid #8DB6CD !important;
+}
+
 .container {
   padding: 80px;
 }
@@ -63,7 +67,7 @@ p,h1,a,li,strong, button {
   text-align: center;
   position: relative;
   z-index: 5;
-  margin-top: 10%
+  margin-top: 10%;
 }
 
 .me .iam p {
@@ -71,7 +75,7 @@ p,h1,a,li,strong, button {
 }
 
 .me .intro p {
-  font-size: 30px;
+  font-size: 20px;
 }
 
 .project {
@@ -128,7 +132,7 @@ p,h1,a,li,strong, button {
     cursor: pointer;
     pointer-events: auto;
     background: none;
-    border: none;
+    border: none !important;
     margin: 0;
     padding: 0;
 }
@@ -364,7 +368,7 @@ p,h1,a,li,strong, button {
   width: 100%;
   left: 0;  
   margin: 0;
-  height: 2px;
+  height: 3px;
   border: none;
   box-shadow: none;
   background-color: rgba(0,0,0,0);
@@ -402,6 +406,80 @@ p,h1,a,li,strong, button {
   text-align: left;
 }
 
+
+/* special for blog */
+.blogCategory {
+  position: relative;
+  width: 70%;
+  margin: auto;
+}
+
+.blogCategory tr {
+  height: 70px;
+}
+
+.blogCategory td {
+  border-top: 0px !important;
+  border-bottom: 1px dotted #8DB6CD;
+  padding: 0 !important;
+  line-height: 70px !important;
+  font-size: 17px;
+  transition: background-color 0.3s;
+  -moz-transition: background-color 0.3s;  /* Firefox 4 */
+  -webkit-transition: background-color 0.3s; /* Safari 和 Chrome */
+  -o-transition: background-color 0.3s;  /* Opera */
+}
+
+.blogCategory td:hover {
+  background-color: #8DB6CD;
+  cursor:pointer
+}
+
+.blogCategory p {
+  line-height: 70px !important;
+  margin: 0;
+  margin-left: 7px;
+  transition: color 0.3s, transform 0.3s;
+  -moz-transition: color 0.3s, -moz-transform 0.3s;  /* Firefox 4 */
+  -webkit-transition: color 0.3s, -webkit-transform 0.3s; /* Safari 和 Chrome */
+  -o-transition: color 0.3s, -o-transform 0.3s;  /* Opera */
+}
+
+.blogCategory .hovered {
+  color: #ffffff;
+  transform: translate(10px,0px);
+  -ms-transform: translate(10px,0px);   /* IE 9 */
+  -webkit-transform: translate(10px,0px); /* Safari and Chrome */
+  -o-transform: translate(10px,0px);    /* Opera */
+  -moz-transform: translate(10px,0px);    /* Firefox */
+}
+
+.oneBlog {
+  position: relative;
+  width: 70%;
+  margin: auto;
+}
+
+.blogTitle {
+  text-align: center;
+  font-size: 50px;
+}
+
+.blogDate {
+  text-align: center;
+  font-size: 17px;
+}
+
+hr {
+  border-top: 0px;
+  border-bottom: 1px dotted #8DB6CD
+}
+
+.back {
+  position: absolute;
+  top: 17px;
+  left: 0;
+}
 
 
 

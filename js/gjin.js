@@ -15,6 +15,7 @@ $(document).ready(function(){
     initNav()
     initNavItemsEvent()
     initProjects()
+    initBlogs()
 })
 
 window.onload = function(){ 
@@ -153,7 +154,6 @@ var initPath = function(){
 var initTitle = function() {
     $(".myProjectBtn").hide()
     $(".fadeInLeft").textillate({
-        initialDelay: 500,
         in: {
             effect: 'fadeInLeft',
             callback: function(){
@@ -252,6 +252,8 @@ var initNavItemsEvent = function(){
             initProjects()
         } else if ($(event.relatedTarget).attr("id") == "homeNav") {
             $(document).pjax("a", ".container", {fragment: ".container"})
+        } else if ($(event.relatedTarget).attr("id") == "blogNav") {
+            initBlogs()
         }
     })
 
@@ -263,8 +265,8 @@ var initNavItemsEvent = function(){
 
 var initProjects = function(){
     $.get("php/project.php", function(data){
-        $("#pt-main").append(data)
-        $(".pt-page").eq(0).addClass("pt-page-current")
+        $(".myProject #pt-main").append(data)
+        $(".myProject .pt-page").eq(0).addClass("pt-page-current")
         currentPageInProgect = 0
         $(".progress-bar").css("width", ((currentPageInProgect + 1) / $(".pt-page").length * 100).toString() + "%")
     })
@@ -272,15 +274,14 @@ var initProjects = function(){
     $(".next").click(function(){
         var pages = $(".pt-page")
         if (currentPageInProgect < pages.length - 1) {
-            pages.eq(currentPageInProgect).addClass("pt-page-moveToLeft").on(animEndEventName, function(){
+            pages.eq(currentPageInProgect).addClass("pt-page-scaleDown").on(animEndEventName, function(){
                 $(this).off(animEndEventName)
-                $(this).removeClass("pt-page-moveToLeft pt-page-current")
+                $(this).removeClass("pt-page-scaleDown pt-page-current")
             })
             ++currentPageInProgect
-            pages.eq(currentPageInProgect).addClass("pt-page-scaleUp pt-page-current").on(animEndEventName, function(){
+            pages.eq(currentPageInProgect).addClass("pt-page-moveFromRight pt-page-current").on(animEndEventName, function(){
                 $(this).off(animEndEventName)
-                $(this).removeClass("pt-page-scaleUp")
-                $(this).addClass("pt-page-current")
+                $(this).removeClass("pt-page-moveFromRight")
             })
             $(".progress-bar").css("width", ((currentPageInProgect + 1) / pages.length * 100).toString() + "%")
         }
@@ -297,11 +298,58 @@ var initProjects = function(){
             pages.eq(currentPageInProgect).addClass("pt-page-scaleUp pt-page-current").on(animEndEventName, function(){
                 $(this).off(animEndEventName)
                 $(this).removeClass("pt-page-scaleUp")
-                $(this).addClass("pt-page-current")
             })
             $(".progress-bar").css("width", ((currentPageInProgect + 1) / pages.length * 100).toString() + "%")
         }
     })
+}
+
+var initBlogs = function(){
+    $.get("php/blogs.php", function(data){
+        var content = data.split("\0")
+        $(".blogCategory table").append(content[0])
+        $(".blog #pt-main").append(content[1])
+        $(".blogCategory tr").mouseover(function(){
+            $(this).find("p").addClass("hovered")
+        })
+        $(".blogCategory tr").mouseout(function(){
+            $(this).find("p").removeClass("hovered")
+        })
+
+        $(".blogCategory tr").click(function(){
+            var id = $(this).attr("id")
+            markDownToHTML(id)
+            $("#category").addClass("pt-page-flipOutRight").on(animEndEventName, function(){
+                $(this).off(animEndEventName)
+                $(this).removeClass("pt-page-flipOutRight pt-page-current")
+            })
+            $("#page" + id).addClass("pt-page-flipInLeft pt-page-delay500 pt-page-current").on(animEndEventName, function(){
+                $(this).off(animEndEventName)
+                $(this).removeClass("pt-page-flipInLeft pt-page-delay500")
+            })
+        })
+
+        $(".back").click(function(){
+            $(this).parent().parent().addClass("pt-page-flipOutLeft").on(animEndEventName, function(){
+                $(this).off(animEndEventName)
+                $(this).removeClass("pt-page-flipOutLeft pt-page-current")
+            })
+            $("#category").addClass("pt-page-flipInRight pt-page-delay500 pt-page-current").on(animEndEventName, function(){
+                $(this).off(animEndEventName)
+                $(this).removeClass("pt-page-flipInRight pt-page-delay500")
+            })
+        })
+    })
+}
+
+var markDownToHTML = function(id){
+    var element = $(".blogContent").eq(id)
+    if (!element.hasClass("blogCached")){
+        element.addClass("blogCached")
+        var text = element.find("p").text()
+        var htmlText = markdown.toHTML(text)
+        element.html(htmlText)
+    }
 }
 
 
