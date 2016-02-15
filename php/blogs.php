@@ -14,7 +14,7 @@
 	for ($eachBlog = 0; $eachBlog < count($blogs); ++$eachBlog) {
 		$blog = $blogs[$eachBlog];
 		$category .= "<tr id = \"".$eachBlog."\">
-						<td><p>".$blog["title"]." | 发布于 ".$blog["date"]."</p></td>
+						<td><p><strong>".$blog["title"]."</strong> | 发布于 ".$blog["date"]."</p></td>
 					  </tr>";
 		$detail .= "<div class = \"pt-page\" id = \"page".$eachBlog."\">
 						<div class = \"oneBlog\">

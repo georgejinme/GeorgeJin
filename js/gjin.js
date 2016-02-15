@@ -24,49 +24,48 @@ window.onload = function(){
 
 var initBackground = function() {
     var canvas = document.getElementById('meCanvas');
-
-    // init canvas width to that of window
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    var renderer = new GlRenderer(canvas, 1000, true, "img/me.jpg", function() {
-        window.requestAnimFrame = (function() {
-        return window.requestAnimationFrame ||
-                window.webkitRequestAnimationFrame ||
-                window.mozRequestAnimationFrame ||
-                function(callback) {
-                    window.setTimeout(callback, 1000 / 60);
-                };
-        })();
-        var draw = SVG('bg').size(window.innerWidth, window.innerHeight)
-        var currentPoint = 0
-        function drawEachPoint() {
-            var polygons = draw.polygon(PolyPoints[currentPoint]["point"][0][0] + "," + PolyPoints[currentPoint]["point"][0][1] + " "
-                                    + PolyPoints[currentPoint]["point"][1][0] + "," + PolyPoints[currentPoint]["point"][1][1] + " "
-                                    + PolyPoints[currentPoint]["point"][2][0] + "," + PolyPoints[currentPoint]["point"][2][1]).fill("rgb(224,255,255)").attr({id: "p" + currentPoint})
-            polygons.animate(1000, '>', 0).attr({fill: PolyPoints[currentPoint]["color"]})
-            ++currentPoint
-        }
-
-        function drawPoints(){
-            if (currentPoint >= PolyPoints.length){
-                return
-            } else {
-                drawEachPoint()
-                drawEachPoint()
-                drawEachPoint()
-                drawEachPoint()
-                drawEachPoint()
-                drawEachPoint()
-                drawEachPoint()
-                drawEachPoint()
-                drawEachPoint()
-                drawEachPoint()
-                requestAnimFrame(drawPoints)
+    if (canvas != null) {
+        // init canvas width to that of window
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        var renderer = new GlRenderer(canvas, 500, true, "img/me.jpg", function() {
+            window.requestAnimFrame = (function() {
+            return window.requestAnimationFrame ||
+                    window.webkitRequestAnimationFrame ||
+                    window.mozRequestAnimationFrame ||
+                    function(callback) {
+                        window.setTimeout(callback, 1000 / 60);
+                    };
+            })();
+            var draw = SVG('bg').size(window.innerWidth, window.innerHeight)
+            var currentPoint = 0
+            function drawEachPoint() {
+                if (currentPoint >= PolyPoints.length){
+                    return
+                }
+                var polygons = draw.polygon(PolyPoints[currentPoint]["point"][0][0] + "," + PolyPoints[currentPoint]["point"][0][1] + " "
+                                        + PolyPoints[currentPoint]["point"][1][0] + "," + PolyPoints[currentPoint]["point"][1][1] + " "
+                                        + PolyPoints[currentPoint]["point"][2][0] + "," + PolyPoints[currentPoint]["point"][2][1]).fill("rgb(255,255,255)").attr({id: "p" + currentPoint})
+                polygons.animate(1000, '>', 0).attr({fill: PolyPoints[currentPoint]["color"]})
+                ++currentPoint
             }
-        }
-        drawPoints()
-        initTitle()
-    });
+
+            function drawPoints(){
+                if (currentPoint >= PolyPoints.length){
+                    return
+                } else {
+                    drawEachPoint()
+                    drawEachPoint()
+                    drawEachPoint()
+                    drawEachPoint()
+                    drawEachPoint()
+                    requestAnimFrame(drawPoints)
+                }
+            }
+            drawPoints()
+            initTitle()
+        });
+    }
 }
 
 var initProgress = function() {
@@ -357,10 +356,10 @@ var initBlogs = function(){
         $(".blogCategory table").append(content[0])
         $(".blog #pt-main").append(content[1])
         $(".blogCategory tr").mouseover(function(){
-            $(this).find("p").addClass("hovered")
+            $(this).find("p, Strong").addClass("hovered")
         })
         $(".blogCategory tr").mouseout(function(){
-            $(this).find("p").removeClass("hovered")
+            $(this).find("p, Strong").removeClass("hovered")
         })
 
         $(".blogCategory tr").click(function(){
@@ -398,5 +397,6 @@ var markDownToHTML = function(id){
         element.html(htmlText)
     }
 }
+
 
 
