@@ -24,6 +24,7 @@ button{
 
 #bg {
   position: fixed;
+  top: -5px;
   transform:rotateX(180deg);
   -ms-transform:rotateX(180deg);   /* IE 9 */
   -moz-transform:rotateX(180deg);  /* Firefox */
@@ -462,6 +463,7 @@ button{
   margin: auto;
   background-color: rgba(255,255,255,0.5);
   padding: 40px;
+  bottom: 40px;
 }
 
 .blogTitle {
@@ -488,6 +490,11 @@ hr {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+#disqus_thread p {
+  font-family: 'ProximaNova-Light';
+  color: #8DB6CD
 }
 
 @font-face {

@@ -29,6 +29,14 @@ var initBackground = function() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         var renderer = new GlRenderer(canvas, 500, true, "img/me.jpg", function() {
+            var center = [window.innerWidth / 2, window.innerHeight / 2]
+            for (var eachPoint = 0; eachPoint < PolyPoints.length; ++eachPoint) {
+                var distance = calculateDistance(PolyPoints[eachPoint]["point"][0], center)
+                PolyPoints[eachPoint]["dis"] = distance
+            }
+            PolyPoints.sort(function(a, b){
+                return a["dis"] - b["dis"]
+            })
             window.requestAnimFrame = (function() {
             return window.requestAnimationFrame ||
                     window.webkitRequestAnimationFrame ||
@@ -59,6 +67,7 @@ var initBackground = function() {
                     drawEachPoint()
                     drawEachPoint()
                     drawEachPoint()
+                    drawEachPoint()
                     requestAnimFrame(drawPoints)
                 }
             }
@@ -66,6 +75,10 @@ var initBackground = function() {
             initTitle()
         });
     }
+}
+
+var calculateDistance = function(point1, point2) {
+    return Math.sqrt(Math.pow(point1[0] - point2[0], 2) + Math.pow(point1[1] - point2[1], 2))
 }
 
 var initProgress = function() {
@@ -298,6 +311,7 @@ var initNavItemsEvent = function(){
             initProjects()
         } else if ($(event.relatedTarget).attr("id") == "homeNav") {
             $(document).pjax("a", ".container", {fragment: ".container"})
+            initTitle()
         } else if ($(event.relatedTarget).attr("id") == "blogNav") {
             initBlogs()
         }
@@ -352,6 +366,7 @@ var initProjects = function(){
 
 var initBlogs = function(){
     $.get("php/blogs.php", function(data){
+        var firstClick = true
         var content = data.split("\0")
         $(".blogCategory table").append(content[0])
         $(".blog #pt-main").append(content[1])
@@ -365,6 +380,8 @@ var initBlogs = function(){
         $(".blogCategory tr").click(function(){
             var id = $(this).attr("id")
             markDownToHTML(id)
+            showComment(id, firstClick)
+            $(".blogComment").eq(id).show()
             $("#category").addClass("pt-page-flipOutRight").on(animEndEventName, function(){
                 $(this).off(animEndEventName)
                 $(this).removeClass("pt-page-flipOutRight pt-page-current")
@@ -373,9 +390,11 @@ var initBlogs = function(){
                 $(this).off(animEndEventName)
                 $(this).removeClass("pt-page-flipInLeft pt-page-delay500")
             })
+            firstClick = false
         })
 
         $(".back").click(function(){
+            $(".blogComment").children().remove()
             $(this).parent().parent().addClass("pt-page-flipOutLeft").on(animEndEventName, function(){
                 $(this).off(animEndEventName)
                 $(this).removeClass("pt-page-flipOutLeft pt-page-current")
@@ -395,6 +414,23 @@ var markDownToHTML = function(id){
         var text = element.find("p").text()
         var htmlText = markdown.toHTML(text)
         element.html(htmlText)
+    }
+}
+
+var showComment = function(id, first) {
+    if (first) {
+        var disqus = "<div id=\"disqus_thread\"></div><script>var disqus_config = function () {this.page.url = \"http://georgejin.me/blog/" + id + "\";this.page.identifier = \"" + id + "\";};(function() {var d = document, s = d.createElement('script');s.src = '//georgejinme.disqus.com/embed.js';s.setAttribute('data-timestamp', +new Date());(d.head || d.body).appendChild(s);})();</script><noscript>Please enable JavaScript to view the <a href=\"https://disqus.com/?ref_noscript\" rel=\"nofollow\">comments powered by Disqus.</a></noscript>"
+        $(".blogComment").eq(id).html(disqus)
+    } else {
+        var disqus = "<div id=\"disqus_thread\"></div>"
+        $(".blogComment").eq(id).html(disqus)
+        DISQUS.reset({
+          reload: true,
+          config: function () {  
+            this.page.identifier = id;  
+            this.page.url = "http://georgejin.me/blog/" + id;
+          }
+        });
     }
 }
 

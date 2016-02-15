@@ -34,7 +34,11 @@
 	                            <p>".$blog["content"]."</p>
 	                        </div>
 	                        <hr/>
-	                    </div>
+	                        <div class = \"blogComment\">		           
+							</div>
+						</div>
+	                    <br/>
+	                    <br/>
 	                </div>";
 	}
 	$res = [$category, $detail];
