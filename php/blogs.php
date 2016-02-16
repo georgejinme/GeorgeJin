@@ -41,6 +41,5 @@
 	                    <br/>
 	                </div>";
 	}
-	$res = [$category, $detail];
 	echo $category."\0".$detail;
 ?>
