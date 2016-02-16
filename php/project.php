@@ -35,7 +35,7 @@
        			}
        		}
        	}
-       	$finalStr .= "</div></div>";
+       	$finalStr .= "</div><br/><br/></div>";
 	}
 	echo $finalStr;
 ?>

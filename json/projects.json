@@ -12,7 +12,7 @@
 		},
 
 		{
-			"imageurl": "img/photo.jpg",
+			"imageurl": "img/tongqu.png",
 			"title": "TongQu",
 			"type": "Tools",
 			"language": "Swift",
@@ -30,7 +30,7 @@
 		},
 
 		{
-			"imageurl": "img/photo.jpg",
+			"imageurl": "img/crossy.png",
 			"title": "Crossy",
 			"type": "Tools",
 			"language": "Swift",
@@ -47,7 +47,7 @@
 		},
 
 		{
-			"imageurl": "img/photo.jpg",
+			"imageurl": "img/embbed.png",
 			"title": "Crossy - Cortex-M3",
 			"type": "Tools",
 			"language": "Python, C",
@@ -64,7 +64,7 @@
 		},
 
 		{	
-			"imageurl": "img/photo.jpg",
+			"imageurl": "img/igem.png",
 			"title": "2015 iGEM - BASE",
 			"type": "Tools",
 			"language": "Javascript, php",
@@ -79,13 +79,13 @@
 				},
 				{
 					"img": "img/github.svg",
-					"url": "https://github.com/igemsoftware/SJTU-Software2015"
+					"url": "http://github.com/igemsoftware/SJTU-Software2015"
 				}
 			]
 		},
 
 		{
-			"imageurl": "img/photo.jpg",
+			"imageurl": "img/emotionmusic.png",
 			"title": "2015 Penta-Hackathon - Music player based on face expression",
 			"type": "Entertainment",
 			"language": "Javascript, Python",
@@ -102,7 +102,7 @@
 		},
 
 		{
-			"imageurl": "img/photo.jpg",
+			"imageurl": "img/zhihupic.png",
 			"title": "Zhihu Picture",
 			"type": "Tools",
 			"language": "Javascript",
@@ -119,10 +119,10 @@
 		},
 
 		{
-			"imageurl": "img/photo.jpg",
+			"imageurl": "img/wap.png",
 			"title": "MultiSense Hotel System",
 			"type": "Tools",
-			"language": "Javascript, Python",
+			"language": "Javascript - ReactJS, Python",
 			"platform": "Website",
 			"date": "2015.12",
 			"role": "Independent Development",
@@ -136,7 +136,7 @@
 		},
 
 		{
-			"imageurl": "img/photo.jpg",
+			"imageurl": "img/3c.png",
 			"title": "Smart Car Control System",
 			"type": "System",
 			"language": "Swift, C",
