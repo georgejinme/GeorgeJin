@@ -307,6 +307,7 @@ var initNavItemsEvent = function(){
     $(document).pjax("a", ".container", {fragment: ".container"})
     $(document).on("pjax:end", function(event){
         console.log("pjax")
+        ga('send', 'pageview', $(event.relatedTarget).attr("id"))
         if ($(event.relatedTarget).attr("id") == "projectsNav" || $(event.relatedTarget).attr("id") == "projectsNavBtn"){
             initProjects()
         } else if ($(event.relatedTarget).attr("id") == "homeNav") {
@@ -379,6 +380,7 @@ var initBlogs = function(){
 
         $(".blogCategory tr").click(function(){
             var id = $(this).attr("id")
+            ga('send', 'event', 'blogs', 'view' + id, id);
             markDownToHTML(id)
             showComment(id, firstClick)
             $(".blogComment").eq(id).show()
