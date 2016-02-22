@@ -408,6 +408,9 @@ button{
 
 
 /* special for blog */
+.blog {
+  margin-top: 80px;
+}
 .blogCategory {
   position: relative;
   width: 70%;
