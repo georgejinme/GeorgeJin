@@ -16,6 +16,7 @@ $(document).ready(function(){
     initNavItemsEvent()
     initProjects()
     initBlogs()
+    initMe()
 })
 
 window.onload = function(){ 
@@ -315,6 +316,8 @@ var initNavItemsEvent = function(){
             initTitle()
         } else if ($(event.relatedTarget).attr("id") == "blogNav") {
             initBlogs()
+        } else if ($(event.relatedTarget).attr("id") == "meNav") {
+            initMe()
         }
     })
 
@@ -330,7 +333,10 @@ var initProjects = function(){
         $(".myProject .pt-page").eq(0).addClass("pt-page-current")
         currentPageInProgect = 0
         $(".progress-bar").css("width", ((currentPageInProgect + 1) / $(".pt-page").length * 100).toString() + "%")
+        var height = $(".projectPhoto").height()
+        $(".projectIntro").css("margin-top", height)
     })
+
 
     $(".next").click(function(){
         var pages = $(".pt-page")
@@ -434,6 +440,11 @@ var showComment = function(id, first) {
           }
         });
     }
+}
+
+var initMe = function() {
+    var height = $(".mePhoto").height()
+    $(".meIntro").css("margin-top", height)
 }
 
 

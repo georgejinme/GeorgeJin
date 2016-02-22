@@ -1,7 +1,7 @@
 {
 	"projects":[
 		{
-			"imageurl": "img/photo.jpg",
+			"imageurl": "img/default.jpg",
 			"title": "20 Seconds",
 			"type": "Game",
 			"language": "Python",
