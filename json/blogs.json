@@ -14,6 +14,11 @@
 			"title": "Objective-C中的Block",
 			"date": "2016.02.28",
 			"content": "Block是什么呢？\n\n其实就是C++中的Lambda表达式，js中的匿名函数，swift中的闭包等。\n\nBlock能截取自动变量值，本质上来说，Block就是一个struct，我们截取到的变量值会存储在这个struct中，这个存储是拷贝存储，也就是说，值是不会随着之后的代码而改变的。更重要的一点是，我们无法对这样捕获到的值进行修改，除非我们增加block修饰符：\n\n\t__block id tmp;\t\n\n这个block修饰符本质也是一个struct，其中有一个指向自己的指针forwarding，这个指针的作用稍后会说明。\n\n作为一个struct，结合之前的ARC，我们知道会有一个retainCount，当一个Block被声明之后，是存在于栈上的，超出作用域就会废弃。但是，如果我们将Block复制到堆，就可以在之后的作用域中继续使用这个Block，而其block修饰符也会复制到堆中。复制的情况发生于以下：\n\n- 调用Block的copy方法\n\n- Block作为函数返回值返回时\n\n- 将Block赋值给有strong修饰符id类型的类\n\n- 在方法名中含有usingBlock的Cocoa框架方法\n\n那么，forwarding到底是用来干嘛的呢？因为Block可以在栈和堆两个地方，所以无论是栈中的Block还是堆中的Block，其内部的forwarding指针会始终指向堆的Block。\n\n还有的可能就是Block中的循环引用问题，但是这个问题真的不是问题，所以也就不多说了吧。"
+		},
+		{
+			"title": "关于Grand Central Dispatch的一些知识",
+			"date": "2016.03.01",
+			"content": "此文中，将下划线命名的方法改成驼峰命名。\n\nGCD是什么，其实就是一堆控制线程的API，高度封装，而且性能优秀。\n\n为什么要有多线程呢？实际上我们打开一个app之后，主线程也就是我们看到的线程只有一个，但是我们会有很多后台的操作，比如下载图片，计算一个很复杂的公式等，如果在主线程中运行，那么用户就不能执行其他的操作。所以一般而言主线程用来更新UI和响应事件，其他的高负荷运算放在另一个线程中。\n\nGCD有两种queue，一种是serial dispatch queue，另外一种是concurrent dispatch queue。顾名思义，前者单线程，后者多线程。他们都是FIFO来执行任务的。\n\n我们有五个紫铜自带的dispatch queue，一个main dispatch queue，是serial的，四个global dispatch queue，是concurrent的，以优先级来区分。\n\n简单讲讲各个API的作用吧：\n\n- dispatchQueueCreate: 创建一个线程，此线程由程序员负责释放\n\n- dispatchSetTargetQueue: 设置线程的优先级\n\n- dispatchAfter: 在某个时间点的某个队列中执行某操作\n\n- dispatchAsync: 异步的将某个操作放入某个队列中执行\n\n- dispatchBarrierAsync: 完成此代码之前的操作再执行此代码，最后执行此代码之后的操作\n\n- dispatchSync: 将某个操作放入某个队列中执行，队列销毁后才能继续执行\n\n- dispatchApply: 按指定的次序将操作放入队列中执行\n\n- dispatchSuspend: 暂停某队列\n\n- dispatchResume: 恢复某队列\n\n简单说说GCD的实现吧，执行线程上操作的步骤如下：\n\n1. Block加入dispatch continuation\n\n2. 调用pthreadWorkqueueAdditemUp，将队列和continuation信息传回\n\n3. 调用pthreadWorkqueue，执行Block操作\n\n4. 如果队列中还有操作，则回到2\n\n差不多就是这些，具体的也要看项目的需求。\n\n"
 		}
 	]
 }
