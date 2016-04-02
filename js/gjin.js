@@ -1,3 +1,5 @@
+
+
 var currentPageInProgect = 0 // the current page of project
 var animEndEventNames = {
             'WebkitAnimation' : 'webkitAnimationEnd',
