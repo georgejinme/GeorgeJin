@@ -39,6 +39,11 @@
 			"title": "Objective-C中的协议和分类",
 			"date": "2016.04.04",
 			"content": "delegate也是iOS编程中的一个重点，他定义了一套接口，如果一个对象想接受另一个对象的委托，则需要遵从此接口，以便成为其委托对象。\n\n这个委托的意思，实际上就是把函数的实现写在另一个类中，这个函数可以使用那个类的方法和数据成员。看上去就像是这个类帮别人做了写事情，成为委托的对象。\n\n委托的协议用@protocal来定义，在存放委托对象的类中，可以这么写：\n\n\t@property (nonatomic, weak) id <SomeProtocal> delegate;\n\n我们必须用weak修饰符来避免循环引用。\n\n上述代码的id指向遵循这个协议的类，表示我们不关心这个类具体是什么，我们只注意到这个类遵循了这个协议。\n\n当然，对于可选的方法，我们在前面加上@optional即可。\n\n下面来说说分类这个东西。OC中的分类对应swift就是其extension。我们可以通过分类把类实现代码按照逻辑分散到几个文件中:\n\n\t@interface SomeClass (AboutSomething)\n\t...\n\t@end\n\n分类中的方法是直接添加在类里面的，就好比是这个类的固有方法，因此会有覆写的可能性。\n\n需要注意的一点是，我们不要在分类中声明属性，因为在分类中是不能添加实例变量的。那不代表不能声明属性，通过@dynamic关键字，或者关联对象，都能够解决这个问题。但是保险起见，还是不要声明属性。\n\n当然，不是说所有的分类都不能，有一种分类叫做class-continuation就是例外，他有如下的特点：\n\n- 必须定义在其所接续的那个类的实现文件里\n\n- 唯一能够声明实例变量的分类\n\n- 分类没有名字\n\n- 分类中的所有属性和方法都是隐藏的，只能在本类中使用\n\n- 可以修改某属性的读写性，只读的属性可以在此分类中扩展为可读写\n\n比如这样：\n\n\t@interface SomeClass()\n\t...\n\t@end\n\n当然，协议也可以隐藏在class-continuation中：\n\n\t@interface SomeClass() <SomeProtocal>\n\t...\n\t@end"
+		},
+		{
+			"title": "Objective-C中的系统框架",
+			"date": "2016.04.13",
+			"content": "iOS开发中有两个最重要的系统框架: Foundation和CoreFoundation，前者定义了OC对象，后者是C语言的API和数据结构。\n\n对于Foundation中的每一个OC对象，我们都有一个对应的CoreFoundation数据结构，使用__bridge可以进行无缝桥接\n\n__bridge: ARC仍然具备这个OC对象的所有权\n\n__bridge_retained: ARC交出这个OC对象的所有权，我们需要手动Release\n\n__bridge_transfer: ARC获得对象的所有权\n\n在OC中，我们遍历一个Collection有以下几种方法：\n\n1. 常规的for循环，和C语言一样\n\n2. NSEnumerator来遍历：nextObject方法来返回枚举里的下个对象，最后一个对象则返回nil\n\n3. 快速遍历：for...in\n\n4. 块遍历：enumerateObjectsUsingBlock, enumerateKeysAndObjectsUsingBlock\n\n块遍历可以提供对象，下标和指向是否终止的布尔值的指针\n\n在进行网络请求下载资源的时候，我们通常会把内容缓存下来。这时候应该采用NSCache\n\nNSCache会在系统资源将要耗尽的时候，自动删减缓存\n\n我们可以设置NSCache的对象的上线和总成本，来定义缓存删减其中对象的时机\n\ninitialize和load方法是OC对象两个比较特殊的初始化方法。前者在第一次使用对象的时候调用，后者在APP启动的时候调用\n\n需要注意的是，这两个方法都是阻塞的，因此我们不能放太多的操作在这两个方法之中。\n\n在load方法中我们不能调用其他类中的方法，因为初始化的顺序和时机是程序员不能确定的。"
 		}
 	]
 }
