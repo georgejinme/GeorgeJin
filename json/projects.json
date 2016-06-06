@@ -1,6 +1,22 @@
 {
 	"projects":[
 		{
+			"imageurl": "img/sjtulost.jpg",
+			"title": "SJTU Lost (No Release)",
+			"type": "Tools",
+			"language": "ReactJS, Python",
+			"platform": "Website",
+			"date": "2016.05",
+			"role": "Independent Development",
+			"description": "Students in SJTU can publish information about their losts. Of course, if they pick up something, they can also go to my website.",
+			"other": [
+				{
+					"img": "img/github.svg",
+					"url": "https://github.com/gougoumemeda/SJTULost"
+				}
+			]
+		},
+		{
 			"imageurl": "img/default.jpg",
 			"title": "20 Seconds",
 			"type": "Game",
@@ -22,7 +38,6 @@
 			"description": "This application helps students in my university to take part in activities and manage his activity group.",
 			"other": [
 				{
-					"info": "App Store",
 					"img": "img/appleinc.svg",
 					"url": "https://itunes.apple.com/cn/app/tong-qu-wang/id933524040?mt=8"
 				}
