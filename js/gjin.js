@@ -428,6 +428,7 @@ var markDownToHTML = function(id){
 }
 
 var showComment = function(id, first) {
+    return;
     if (first) {
         var disqus = "<div id=\"disqus_thread\"></div><script>var disqus_config = function () {this.page.url = \"http://georgejin.me/blog/" + id + "\";this.page.identifier = \"" + id + "\";};(function() {var d = document, s = d.createElement('script');s.src = '//georgejinme.disqus.com/embed.js';s.setAttribute('data-timestamp', +new Date());(d.head || d.body).appendChild(s);})();</script><noscript>Please enable JavaScript to view the <a href=\"https://disqus.com/?ref_noscript\" rel=\"nofollow\">comments powered by Disqus.</a></noscript>"
         $(".blogComment").eq(id).html(disqus)
